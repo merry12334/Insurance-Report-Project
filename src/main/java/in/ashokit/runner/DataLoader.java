@@ -13,82 +13,140 @@ import in.ashokit.repo.CitizenPlanRepository;
 
 @Component
 public class DataLoader implements ApplicationRunner {
-	
 
-    @Autowired
-    private CitizenPlanRepository repo;
+	@Autowired
+	private CitizenPlanRepository repo;
 
-    @Override
-    public void run(ApplicationArguments args) throws Exception {
-    	
-        repo.deleteAll();
-        
-        CitizenPlan c1 = new CitizenPlan(101, "Amit Sharma", "Male", "Cash", "Approved", 
-            LocalDate.of(2024, 1, 1), LocalDate.of(2024, 6, 1), 5000.0, null, null, null);
-        CitizenPlan c2 = new CitizenPlan(102, "Sneha Roy", "Female", "Food", "Approved", 
-            LocalDate.of(2024, 2, 1), LocalDate.of(2024, 7, 1), 3000.0, null, null, null);
-        CitizenPlan c3 = new CitizenPlan(103, "Ravi Mehta", "Male", "Medical", "Approved", 
-            LocalDate.of(2024, 3, 1), LocalDate.of(2024, 8, 1), 7000.0, null, null, null);
-        CitizenPlan c4 = new CitizenPlan(104, "Lata Kumari", "Female", "Employment", "Approved", 
-            LocalDate.of(2024, 1, 15), LocalDate.of(2024, 6, 15), 8000.0, null, null, null);
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
 
-        CitizenPlan c5 = new CitizenPlan(105, "Karan Singh", "Male", "Cash", "Denied", 
-            null, null, null, "High income", null, null);
-        CitizenPlan c6 = new CitizenPlan(106, "Nisha Agarwal", "Female", "Food", "Denied", 
-            null, null, null, "Invalid documents", null, null);
-        CitizenPlan c7 = new CitizenPlan(107, "Vikram Patel", "Male", "Medical", "Denied", 
-            null, null, null, "Age criteria not met", null, null);
-        CitizenPlan c8 = new CitizenPlan(108, "Priya Das", "Female", "Employment", "Denied", 
-            null, null, null, "Already employed", null, null);
+		// Clear existing data
+		repo.deleteAll();
 
-        CitizenPlan c9 = new CitizenPlan(109, "Ramesh Kumar", "Male", "Cash", "Terminated", 
-            LocalDate.of(2024, 1, 1), LocalDate.of(2024, 12, 31), 6000.0, null, 
-            LocalDate.of(2024, 4, 15), "Policy violation");
-        CitizenPlan c10 = new CitizenPlan(110, "Shalini Singh", "Female", "Food", "Terminated", 
-            LocalDate.of(2024, 2, 1), LocalDate.of(2024, 11, 30), 4000.0, null, 
-            LocalDate.of(2024, 6, 10), "Left region");
-        CitizenPlan c11 = new CitizenPlan(111, "Anuj Verma", "Male", "Medical", "Terminated", 
-            LocalDate.of(2024, 1, 10), LocalDate.of(2024, 10, 10), 7500.0, null, 
-            LocalDate.of(2024, 5, 1), "Falsified info");
-        CitizenPlan c12 = new CitizenPlan(112, "Kajal Yadav", "Female", "Employment", "Terminated", 
-            LocalDate.of(2024, 3, 1), LocalDate.of(2024, 9, 1), 9000.0, null, 
-            LocalDate.of(2024, 7, 1), "Breach of contract");
+		// Creating CitizenPlan objects with setter methods
+		CitizenPlan c1 = new CitizenPlan();
+		c1.setCitizenName("Amit Sharma");
+		c1.setGender("Male");
+		c1.setPlanName("Cash");
+		c1.setPlanStatus("Approved");
+		c1.setPlanStartDate(LocalDate.of(2024, 1, 1));
+		c1.setPlanEndDate(LocalDate.of(2024, 6, 1));
+		c1.setBenefitAmount(5000.0);
+		c1.setDenialReason(null);
+		c1.setTerminatedDate(null);
+		c1.setTerminationReason(null);
 
-        CitizenPlan c13 = new CitizenPlan(113, "Deepak Joshi", "Male", "Cash", "Approved", 
-            LocalDate.of(2024, 4, 1), LocalDate.of(2024, 9, 1), 5200.0, null, null, null);
-        CitizenPlan c14 = new CitizenPlan(114, "Meena Iyer", "Female", "Food", "Approved", 
-            LocalDate.of(2024, 5, 1), LocalDate.of(2024, 10, 1), 3500.0, null, null, null);
-        CitizenPlan c15 = new CitizenPlan(115, "Harsh Thakur", "Male", "Medical", "Approved", 
-            LocalDate.of(2024, 3, 15), LocalDate.of(2024, 8, 15), 7100.0, null, null, null);
-        CitizenPlan c16 = new CitizenPlan(116, "Ritu Sharma", "Female", "Employment", "Approved", 
-            LocalDate.of(2024, 1, 20), LocalDate.of(2024, 7, 20), 8800.0, null, null, null);
+		CitizenPlan c2 = new CitizenPlan();
+		c2.setCitizenName("Sneha Roy");
+		c2.setGender("Female");
+		c2.setPlanName("Food");
+		c2.setPlanStatus("Approved");
+		c2.setPlanStartDate(LocalDate.of(2024, 2, 1));
+		c2.setPlanEndDate(LocalDate.of(2024, 7, 1));
+		c2.setBenefitAmount(3000.0);
+		c2.setDenialReason(null);
+		c2.setTerminatedDate(null);
+		c2.setTerminationReason(null);
 
-        CitizenPlan c17 = new CitizenPlan(117, "Ajay Bansal", "Male", "Cash", "Denied", 
-            null, null, null, "Incomplete application", null, null);
-        CitizenPlan c18 = new CitizenPlan(118, "Pooja Chauhan", "Female", "Food", "Denied", 
-            null, null, null, "Not eligible", null, null);
-        CitizenPlan c19 = new CitizenPlan(119, "Suresh Rana", "Male", "Medical", "Denied", 
-            null, null, null, "Unverified identity", null, null);
-        CitizenPlan c20 = new CitizenPlan(120, "Divya Rani", "Female", "Employment", "Denied", 
-            null, null, null, "Background check failed", null, null);
+		CitizenPlan c3 = new CitizenPlan();
+		c3.setCitizenName("Ravi Mehta");
+		c3.setGender("Male");
+		c3.setPlanName("Medical");
+		c3.setPlanStatus("Approved");
+		c3.setPlanStartDate(LocalDate.of(2024, 3, 1));
+		c3.setPlanEndDate(LocalDate.of(2024, 8, 1));
+		c3.setBenefitAmount(7000.0);
+		c3.setDenialReason(null);
+		c3.setTerminatedDate(null);
+		c3.setTerminationReason(null);
 
-        CitizenPlan c21 = new CitizenPlan(121, "Manish Rawat", "Male", "Cash", "Terminated", 
-            LocalDate.of(2024, 2, 10), LocalDate.of(2024, 8, 10), 5600.0, null, 
-            LocalDate.of(2024, 5, 25), "Incomplete reports");
-        CitizenPlan c22 = new CitizenPlan(122, "Neha Tiwari", "Female", "Food", "Terminated", 
-            LocalDate.of(2024, 3, 5), LocalDate.of(2024, 9, 5), 4200.0, null, 
-            LocalDate.of(2024, 6, 15), "Uninformed absence");
-        CitizenPlan c23 = new CitizenPlan(123, "Tarun Nair", "Male", "Medical", "Terminated", 
-            LocalDate.of(2024, 4, 1), LocalDate.of(2024, 12, 1), 8000.0, null, 
-            LocalDate.of(2024, 7, 10), "Faked documents");
-        CitizenPlan c24 = new CitizenPlan(124, "Preeti Sinha", "Female", "Employment", "Terminated", 
-            LocalDate.of(2024, 1, 1), LocalDate.of(2024, 6, 30), 9300.0, null, 
-            LocalDate.of(2024, 5, 5), "Violation of agreement");
+		CitizenPlan c4 = new CitizenPlan();
+		c4.setCitizenName("Lata Kumari");
+		c4.setGender("Female");
+		c4.setPlanName("Employment");
+		c4.setPlanStatus("Approved");
+		c4.setPlanStartDate(LocalDate.of(2024, 1, 15));
+		c4.setPlanEndDate(LocalDate.of(2024, 6, 15));
+		c4.setBenefitAmount(8000.0);
+		c4.setDenialReason(null);
+		c4.setTerminatedDate(null);
+		c4.setTerminationReason(null);
 
-        repo.saveAll(Arrays.asList(
-                c1, c2, c3, c4, c5, c6, c7, c8,
-                c9, c10, c11, c12, c13, c14, c15, c16,
-                c17, c18, c19, c20, c21, c22, c23, c24
-        ));
-    }
+		CitizenPlan c5 = new CitizenPlan();
+		c5.setCitizenName("Karan Singh");
+		c5.setGender("Male");
+		c5.setPlanName("Cash");
+		c5.setPlanStatus("Denied");
+		c5.setPlanStartDate(null);
+		c5.setPlanEndDate(null);
+		c5.setBenefitAmount(null);
+		c5.setDenialReason("High income");
+		c5.setTerminatedDate(null);
+		c5.setTerminationReason(null);
+
+		CitizenPlan c6 = new CitizenPlan();
+		c6.setCitizenName("Nisha Agarwal");
+		c6.setGender("Female");
+		c6.setPlanName("Food");
+		c6.setPlanStatus("Denied");
+		c6.setPlanStartDate(null);
+		c6.setPlanEndDate(null);
+		c6.setBenefitAmount(null);
+		c6.setDenialReason("Invalid documents");
+		c6.setTerminatedDate(null);
+		c6.setTerminationReason(null);
+
+		CitizenPlan c7 = new CitizenPlan();
+		c7.setCitizenName("Vikram Patel");
+		c7.setGender("Male");
+		c7.setPlanName("Medical");
+		c7.setPlanStatus("Denied");
+		c7.setPlanStartDate(null);
+		c7.setPlanEndDate(null);
+		c7.setBenefitAmount(null);
+		c7.setDenialReason("Age criteria not met");
+		c7.setTerminatedDate(null);
+		c7.setTerminationReason(null);
+
+		CitizenPlan c8 = new CitizenPlan();
+		c8.setCitizenName("Priya Das");
+		c8.setGender("Female");
+		c8.setPlanName("Employment");
+		c8.setPlanStatus("Denied");
+		c8.setPlanStartDate(null);
+		c8.setPlanEndDate(null);
+		c8.setBenefitAmount(null);
+		c8.setDenialReason("Already employed");
+		c8.setTerminatedDate(null);
+		c8.setTerminationReason(null);
+
+		CitizenPlan c9 = new CitizenPlan();
+		c9.setCitizenName("Ramesh Kumar");
+		c9.setGender("Male");
+		c9.setPlanName("Cash");
+		c9.setPlanStatus("Terminated");
+		c9.setPlanStartDate(LocalDate.of(2024, 1, 1));
+		c9.setPlanEndDate(LocalDate.of(2024, 12, 31));
+		c9.setBenefitAmount(6000.0);
+		c9.setDenialReason(null);
+		c9.setTerminatedDate(LocalDate.of(2024, 4, 15));
+		c9.setTerminationReason("Policy violation");
+
+		CitizenPlan c10 = new CitizenPlan();
+		c10.setCitizenName("Shalini Singh");
+		c10.setGender("Female");
+		c10.setPlanName("Food");
+		c10.setPlanStatus("Terminated");
+		c10.setPlanStartDate(LocalDate.of(2024, 2, 1));
+		c10.setPlanEndDate(LocalDate.of(2024, 11, 30));
+		c10.setBenefitAmount(4000.0);
+		c10.setDenialReason(null);
+		c10.setTerminatedDate(LocalDate.of(2024, 6, 10));
+		c10.setTerminationReason("Left region");
+
+		// Add more CitizenPlan objects as needed...
+
+		// Saving all the records in the database
+		repo.saveAll(Arrays.asList(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10));
+	}
 }

@@ -7,12 +7,13 @@ import org.springframework.data.jpa.repository.Query;
 
 import in.ashokit.entity.CitizenPlan;
 
-public interface CitizenPlanRepository  extends JpaRepository<CitizenPlan, Integer>{
-	
-	//custom query for showing plan and status in drop down(pre-populate the data in drop dow  n ).
+public interface CitizenPlanRepository extends JpaRepository<CitizenPlan, Integer> {
+
+	// custom query for showing plan and status in drop down(pre-populate the data
+	// in drop down ).
 	@Query("select distinct(planName) from CitizenPlan")
-	public List<String> getPlanName();
-	
+	public List<String> getPlanNames();
+
 	@Query("select distinct(planStatus) from CitizenPlan")
 	public List<String> getPlanStatus();
 
