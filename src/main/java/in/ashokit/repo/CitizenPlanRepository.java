@@ -10,7 +10,7 @@ import in.ashokit.entity.CitizenPlan;
 public interface CitizenPlanRepository extends JpaRepository<CitizenPlan, Integer> {
 
 	// custom query for showing plan and status in drop down(pre-populate the data
-	// in drop down ).
+	// in drop down(hql query) ).
 	@Query("select distinct(planName) from CitizenPlan")
 	public List<String> getPlanNames();
 

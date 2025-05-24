@@ -4,6 +4,7 @@ import java.util.List;
 
 import in.ashokit.entity.CitizenPlan;
 import in.ashokit.request.SearchRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 public interface ReportService {
 	
@@ -13,9 +14,9 @@ public interface ReportService {
 	
 	public List<CitizenPlan> search(SearchRequest request);
 	
-	public  boolean generateExcel();
+	public  boolean generateExcel(HttpServletResponse response)throws Exception;
 	
-	public  boolean generatePdf();
+	public  boolean generatePdf(HttpServletResponse response)throws Exception;
 	
 
 }

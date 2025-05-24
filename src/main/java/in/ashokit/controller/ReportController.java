@@ -12,12 +12,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import in.ashokit.entity.CitizenPlan;
 import in.ashokit.request.SearchRequest;
 import in.ashokit.service.ReportService;
+import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class ReportController {
 
 	@Autowired
 	private ReportService service;
+	
+	@GetMapping("/pdf")
+	public void exportPdf(HttpServletResponse response) throws Exception {
+	    // Correct MIME type for Excel .xls files
+	    response.setContentType("application/pdf");
+	    // Corrected "attachment" spelling and proper formatting
+	    response.setHeader("Content-Disposition", "attachment; filename=planss.pdf");
+	    service.generatePdf(response);
+	}
+	
+	@GetMapping("/excel")
+	public void exportExcel(HttpServletResponse response) throws Exception {
+	    // Correct MIME type for Excel .xls files
+	    response.setContentType("application/vnd.ms-excel");
+	    // Corrected "attachment" spelling and proper formatting
+	    response.setHeader("Content-Disposition", "attachment; filename=plans.xls");
+	    service.generateExcel(response);
+	}
+
 
 	@PostMapping("/search")
 	public String handleSearch(@ModelAttribute("search")  SearchRequest search, Model model) {

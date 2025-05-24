@@ -98,7 +98,7 @@
     </c:if>
 
     <hr/>
-    <p>Export: <a href="#">Excel</a> | <a href="#">PDF</a></p>
+    <p>Export: <a href="excel">Excel</a> | <a href="pdf">PDF</a></p>
 </div>
 </body>
 </html>
